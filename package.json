@@ -2,9 +2,8 @@
   "name": "computer-database",
   "version": "1.0.0",
   "description": "test assignment for Backbase",
-  "main": "nightwatch.conf.js",
   "scripts": {
-    "test": "nightwatch nightwatch.json"
+    "test": "nightwatch"
   },
   "repository": {
     "type": "git",
