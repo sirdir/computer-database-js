@@ -6,6 +6,7 @@
     "server_path": "node_modules/.bin/chromedriver",
     "port": 9515
   },
+  "globals_path": "globals.js",
 
   "test_settings" : {
     "default" : {
