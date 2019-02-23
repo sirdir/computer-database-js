@@ -1,0 +1,24 @@
+{
+  "name": "computer-database",
+  "version": "1.0.0",
+  "description": "test assignment for Backbase",
+  "main": "index.js",
+  "scripts": {
+    "test": "nightwatch nightwatch.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sirdir/computer-database-js.git"
+  },
+  "keywords": [
+    "backbase",
+    "test-automation",
+    "nightwatch"
+  ],
+  "author": "sirdir (aka Tymur Kubai)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sirdir/computer-database-js/issues"
+  },
+  "homepage": "https://github.com/sirdir/computer-database-js#readme"
+}
