@@ -22,6 +22,7 @@
   "homepage": "https://github.com/sirdir/computer-database-js#readme",
   "devDependencies": {
     "chromedriver": "^2.46.0",
-    "nightwatch": "^1.0.19"
+    "nightwatch": "^1.0.19",
+    "nightwatch-html-reporter": "^2.0.6"
   }
 }
