@@ -2,7 +2,7 @@
   "name": "computer-database",
   "version": "1.0.0",
   "description": "test assignment for Backbase",
-  "main": "index.js",
+  "main": "nightwatch.conf.js",
   "scripts": {
     "test": "nightwatch nightwatch.json"
   },
@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/sirdir/computer-database-js/issues"
   },
-  "homepage": "https://github.com/sirdir/computer-database-js#readme"
+  "homepage": "https://github.com/sirdir/computer-database-js#readme",
+  "devDependencies": {
+    "chromedriver": "^2.46.0",
+    "nightwatch": "^1.0.19"
+  }
 }
