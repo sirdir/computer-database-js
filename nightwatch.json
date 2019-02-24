@@ -7,7 +7,7 @@
     "port": 9515
   },
   "globals_path": "globals.js",
-
+  "page_objects_path" : "pages",
   "test_settings" : {
     "default" : {
       "desiredCapabilities": {

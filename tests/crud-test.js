@@ -1,61 +1,57 @@
-
 const name = 'pc_' + new Date().getTime();
 const newName = 'pc_' + new Date().getTime();
+const intrDate = '2010-10-10';
+const discDate = '2020-12-12';
+const company = 'IBM';
+const newIntrDate = '2012-11-11';
+const newDiscDate = '2035-01-01';
+const newCompany = 'ASUS';
 const createMessage = "Done! Computer " + name + " has been created";
 const updateMessage = "Done! Computer " + newName + " has been updated";
 const deleteMessage = "Done! Computer has been deleted";
 
 module.exports = {
-
     'create computer' : function (browser) {
-        browser
-            .url('http://computer-database.herokuapp.com/computers')
-            .waitForElementVisible('body', 1000)
-            .click('#add')
-            .pause(1000)
-            .setValue('#name', name)
-            .click('input[value="Create this computer"]')
-            .pause(1000)
-            .assert.containsText('div.alert-message', createMessage);
+        const main = browser.page.main();
+        const newComputer = browser.page.newComputer();
+
+        main.navigate();
+        main.addNewPc();
+        newComputer.submitPc(name, intrDate, discDate, company);
+        main.assert.containsText('@alertText', createMessage, "notification message");
     },
     'read computer' : function (browser) {
-        browser
-            .url('http://computer-database.herokuapp.com/computers')
-            .waitForElementVisible('body', 1000)
-            .setValue('#searchbox', name)
-            .click('#searchsubmit')
-            .pause(1000)
-            .click('.computers td > a')
-            .pause(2000)
-            .getValue('#name', function(result) {
-                this.assert.equal(result.value, name);
-            });
+        const main = browser.page.main();
+        const existedComputer = browser.page.existedComputer();
+
+        main.navigate();
+        main.search(name);
+        main.openCompany();
+        existedComputer.assert.value('@name', name, "pc name");
+        existedComputer.assert.value('@introductionDate', intrDate, "introduction date");
+        existedComputer.assert.value('@discontinuedDate', discDate, "discontinue date");
+        existedComputer.assert.containsText('@company', company, "company name");
     },
     'update computer' : function (browser) {
-        browser
-            .url('http://computer-database.herokuapp.com/computers')
-            .waitForElementVisible('body', 1000)
-            .setValue('#searchbox', name)
-            .click('#searchsubmit')
-            .pause(1000)
-            .click('.computers td > a')
-            .pause(2000)
-            .clearValue('#name')
-            .setValue('#name', newName)
-            .click('input[value="Save this computer"]')
-            .assert.containsText('div.alert-message', updateMessage);
+        const main = browser.page.main();
+        const existedComputer = browser.page.existedComputer();
+
+        main.navigate();
+        main.search(name);
+        main.openCompany();
+        existedComputer.update(newName, newIntrDate, newDiscDate, newCompany);
+        main.assert.containsText('@alertText', updateMessage, "notification message");
     },
     'delete computer' : function (browser) {
-        browser
-            .url('http://computer-database.herokuapp.com/computers')
-            .waitForElementVisible('body', 1000)
-            .setValue('#searchbox', newName)
-            .click('#searchsubmit')
-            .pause(1000)
-            .click('.computers td > a')
-            .pause(2000)
-            .click('input[value="Delete this computer"]')
-            .assert.containsText('div.alert-message', deleteMessage)
-            .end();
+        const main = browser.page.main();
+        const existedComputer = browser.page.existedComputer();
+
+        main.navigate();
+        main.search(name);
+        main.openCompany(name);
+        existedComputer.delete();
+        main.assert.containsText('@alertText', deleteMessage, "notification message");
+
+        browser.end();
     }
 };
