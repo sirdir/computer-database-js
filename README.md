@@ -1,8 +1,9 @@
 # computer-database-js
 
+Maybe be present some flaws in preconditions/run/reports. Don't judge me :)
 
 ##pre conditions/setup
-npm install --save-dev
+`npm install --save-dev`
 
 ## Run
 `nightwatch`
